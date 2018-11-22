@@ -51,7 +51,7 @@ module ``about pipelining`` =
             |> List.filter isEven
             |> List.map square
         
-        AssertEquality result __
+        AssertEquality result [0;4;16]
 
     [<Koan>]
     let HowThePipeOperatorIsDefined() =
@@ -63,4 +63,4 @@ module ``about pipelining`` =
             |> List.filter isEven
             |> List.map square
 
-        AssertEquality result __
+        AssertEquality result [0;4;16]
