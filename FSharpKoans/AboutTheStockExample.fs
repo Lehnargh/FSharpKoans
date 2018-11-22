@@ -1,6 +1,6 @@
 ﻿namespace FSharpKoans
 open FSharpKoans.Core
-
+open System.Globalization
 //---------------------------------------------------------------
 // Apply Your Knowledge!
 //
@@ -57,9 +57,54 @@ module ``about the stock example`` =
     // Feel free to add extra [<Koan>] members here to write
     // tests for yourself along the way. You can also try 
     // using the F# Interactive window to check your progress.
+    let splitCommas (x:string) =
+        x.Split([|','|])
+
+    [<Koan>]
+    let SplitItUp() =
+        let header = stockData.Head
+        let headerSplit = splitCommas header
+
+        AssertEquality headerSplit.Length 7
+
+    [<Koan>]
+    let ParseDoubleCorrectly()=
+        let parseResult (x: string) = 
+            System.Double.Parse(x, CultureInfo.InvariantCulture)
+
+        AssertEquality (parseResult "31.98") 31.98
+
+
+    [<Koan>]
+    let parseFloatTest()=
+        AssertEquality (float "12.34") 12.34
+
+
+    [<Koan>]
+    let findMin()=
+        let array = [|0..5|] 
+
+        let min = array |> Array.min
+
+
+        AssertEquality min 0   
+
+    [<Koan>]
+    let findMax()=
+        let array = [|0..5|]
+
+        let max = array |> Array.max
+
+        AssertEquality max 5    
+        
 
     [<Koan>]
     let YouGotTheAnswerCorrect() =
-        let result =  __
+        let result =  stockData
+                        |> List.skip 1
+                        |> Seq.map splitCommas
+                        |> Seq.sortByDescending (fun x -> abs (float x.[1] - float x.[4]))
+                        |> Seq.head 
+                        |> Seq.head
         
         AssertEquality "2012-03-13" result
