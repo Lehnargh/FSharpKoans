@@ -1,9 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Name>FSharpKoans</Name>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Name>FSharpKoans</Name>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FSharpKoans.Core\FSharpKoans.Core.fsproj" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutAsserts.fs" />
     <Compile Include="AboutLet.fs" />
@@ -11,8 +14,8 @@
     <Compile Include="AboutTheOrderOfEvaluation.fs" />
     <Compile Include="AboutUnit.fs" />
     <Compile Include="AboutTuples.fs" />
-    <Compile Include="AboutStrings.fs" />
     <Compile Include="AboutBranching.fs" />
+    <Compile Include="AboutStrings.fs" />
     <Compile Include="AboutLists.fs" />
     <Compile Include="AboutPipelining.fs" />
     <Compile Include="AboutArrays.fs" />
@@ -29,6 +32,6 @@
     <Compile Include="PathToEnlightenment.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FSharpKoans.Core\FSharpKoans.Core.fsproj" />
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
   </ItemGroup>
 </Project>
